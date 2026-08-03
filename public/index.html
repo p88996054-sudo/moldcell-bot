@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="ro">
+<html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
-<title>Suport Moldcell</title>
+<title>BrightSmile Dental — Support</title>
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -13,14 +13,14 @@
     --surface: #141414;
     --surface2: #1c1c1c;
     --border: #2a2a2a;
-    --accent: #e4002b;
-    --accent-dim: rgba(228,0,43,0.12);
-    --accent-glow: rgba(228,0,43,0.2);
+    --accent: #0aa5c4;
+    --accent-dim: rgba(10,165,196,0.12);
+    --accent-glow: rgba(10,165,196,0.2);
     --text: #f0f0f0;
     --text-dim: #888;
     --text-muted: #555;
-    --user-bubble: #2a0a0f;
-    --user-border: rgba(228,0,43,0.3);
+    --user-bubble: #0a2229;
+    --user-border: rgba(10,165,196,0.3);
     --bot-bubble: #1a1a1a;
     --font: 'DM Sans', sans-serif;
   }
@@ -102,41 +102,41 @@
 <div class="phone-shell">
   <div class="topbar">
     <div class="brand">
-      <div class="logo">MC</div>
+      <div class="logo">BS</div>
       <div class="brand-info">
-        <h1>Suport Moldcell</h1>
-        <p>Disponibil 24/7</p>
+        <h1>BrightSmile Dental</h1>
+        <p>Online now</p>
       </div>
     </div>
-    <button class="topbar-btn" onclick="clearChat()" title="Conversație nouă">↺</button>
+    <button class="topbar-btn" onclick="clearChat()" title="New conversation">↺</button>
   </div>
 
   <div class="messages" id="messages">
-    <div class="date-divider">Astăzi</div>
+    <div class="date-divider">Today</div>
     <div class="welcome-card">
       <div class="welcome-header">
-        <div class="welcome-logo">MC</div>
+        <div class="welcome-logo">BS</div>
         <div class="welcome-info">
-          <h2>Asistent virtual Moldcell</h2>
-          <p>Consultant digital disponibil non-stop</p>
+          <h2>BrightSmile Dental Assistant</h2>
+          <p>Here to help around the clock</p>
         </div>
       </div>
       <div class="welcome-text">
-        Bună ziua. Sunt asistentul virtual Moldcell. Vă pot ajuta cu informații despre abonamente, internet mobil, roaming, reîncărcare și alte servicii. Cum vă pot ajuta?
+        Hi there! I'm the BrightSmile Dental assistant. I can help you with our services, prices, appointments, and opening hours. How can I help you today?
       </div>
       <div class="quick-chips">
-        <button class="chip" onclick="sendQuick('Ce abonamente oferiți?')">Abonamente</button>
-        <button class="chip" onclick="sendQuick('Cum activez roaming-ul?')">Roaming</button>
-        <button class="chip" onclick="sendQuick('Cum îmi reîncarc numărul?')">Reîncărcare</button>
-        <button class="chip" onclick="sendQuick('Internetul meu nu funcționează')">Probleme tehnice</button>
-        <button class="chip" onclick="sendQuick('Cum verific soldul?')">Sold</button>
+        <button class="chip" onclick="sendQuick('What services do you offer?')">Services</button>
+        <button class="chip" onclick="sendQuick('How much does a cleaning cost?')">Prices</button>
+        <button class="chip" onclick="sendQuick('I want to book an appointment')">Book appointment</button>
+        <button class="chip" onclick="sendQuick('What are your opening hours?')">Opening hours</button>
+        <button class="chip" onclick="sendQuick('I have a dental emergency')">Emergency</button>
       </div>
     </div>
   </div>
 
   <div class="input-area">
     <div class="input-row">
-      <input type="text" id="userInput" placeholder="Scrieți întrebarea..."
+      <input type="text" id="userInput" placeholder="Type your question..."
              onkeydown="if(event.key==='Enter') sendMessage()" maxlength="500" />
       <button class="send-btn" id="sendBtn" onclick="sendMessage()">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
@@ -154,7 +154,7 @@
   const messagesEl = document.getElementById('messages');
 
   function getTime() {
-    return new Date().toLocaleTimeString('ro-RO', { hour: '2-digit', minute: '2-digit' });
+    return new Date().toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit' });
   }
 
   function appendMsg(role, text) {
@@ -163,7 +163,7 @@
 
     const av = document.createElement('div');
     av.className = role === 'bot' ? 'msg-avatar' : 'msg-avatar user-av';
-    av.textContent = role === 'bot' ? 'MC' : 'Tu';
+    av.textContent = role === 'bot' ? 'BS' : 'You';
 
     const wrap = document.createElement('div');
     const bubble = document.createElement('div');
@@ -188,7 +188,7 @@
     div.id = 'typing-indicator';
     const av = document.createElement('div');
     av.className = 'msg-avatar';
-    av.textContent = 'MC';
+    av.textContent = 'BS';
     const typing = document.createElement('div');
     typing.className = 'typing';
     typing.innerHTML = '<span></span><span></span><span></span>';
@@ -232,7 +232,7 @@
       appendMsg('bot', data.reply);
     } catch (err) {
       removeTyping();
-      appendMsg('bot', 'Eroare de conexiune. Încercați din nou.');
+      appendMsg('bot', 'Connection error. Please try again.');
     }
 
     isLoading = false;
@@ -250,9 +250,9 @@
     messagesEl.innerHTML = '';
     const d = document.createElement('div');
     d.className = 'date-divider';
-    d.textContent = 'Conversație nouă';
+    d.textContent = 'New conversation';
     messagesEl.appendChild(d);
-    appendMsg('bot', 'Conversație nouă. Cum vă pot ajuta?');
+    appendMsg('bot', 'New conversation. How can I help you?');
   }
 </script>
 </body>
